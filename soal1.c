@@ -1,28 +1,36 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdio.h>
 
-int main()
-{
-    int jumlah;
-    scanf("%d", &jumlah);
-    int angka[jumlah];
-    
-    for(int i = 0; i < jumlah;i++){
-        scanf("%d", &angka[i]);
-    }
-    
-    
-    for(int i = 0; i < jumlah; i++){
-        for(int j = 0; j < jumlah -1; j++){
-            if (angka[j] > angka[j+1]){
-                int temp = angka[j];
-                angka[j] = angka[j+1];
-                angka[j+1] = angka[j];
+void bubbleSort(int array[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
             }
         }
     }
+}
 
-    for(int i = 0; i < jumlah;i++){
-        scanf("%d\n", angka[i]);
+int main() {
+    int count;
+
+    scanf("%d", &count);
+
+    int values[count];
+
+    for (int i = 0; i < count; i++) {
+        scanf("%d", &values[i]);
     }
-  return 0;
+
+    bubbleSort(values, count);
+
+    for (int i = 0; i < count; i++) {
+        printf("%d\n", values[i]);
+    }
+
+    return 0;
 }
